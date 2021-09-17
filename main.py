@@ -1,10 +1,8 @@
-from fastapi import FastAPI
-import uvicorn
-from fastapi import HTTPException
-
-from typing import Optional
-
 from card import MedicalCard, is_valid_patient
+from fastapi import FastAPI
+from fastapi import HTTPException
+from typing import Optional
+import uvicorn
 
 app = FastAPI()
 
