@@ -1,11 +1,4 @@
-from pydantic import BaseModel
-
-
-class MedicalCard(BaseModel):
-    name: str
-    age: int
-    gender: str
-    diagnosis: str
+from models.medical_cards import MedicalCard
 
 
 def is_valid_name(name):

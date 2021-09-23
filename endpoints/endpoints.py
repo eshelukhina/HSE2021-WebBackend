@@ -4,7 +4,8 @@ from fastapi import APIRouter
 from fastapi import HTTPException
 
 from db.fake_db import data
-from logic.card import MedicalCard, is_valid_patient
+from logic.card import is_valid_patient
+from models.medical_cards import MedicalCard
 
 router = APIRouter(prefix="/Patients", tags=["Patients"], )
 
