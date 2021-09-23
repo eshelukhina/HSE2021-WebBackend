@@ -7,7 +7,7 @@ from db.fake_db import data
 from logic.card import is_valid_patient
 from models.medical_cards import MedicalCard
 
-router = APIRouter(prefix="/Patients", tags=["Patients"], )
+router = APIRouter(prefix="/Patients", tags=["Patients"])
 
 
 @router.get("/id")
