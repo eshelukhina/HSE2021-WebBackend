@@ -3,14 +3,14 @@ from typing import Optional
 from fastapi import APIRouter
 from fastapi import HTTPException
 
-from db.fake_db import data
-from logic.card import is_valid_patient
-from logic.card import check_other_appointments
-from logic.card import delete_appointment
-from logic.card import delete_visit
-from models.medical_cards import MedicalCard
-from models.medical_cards import Appointment
-from models.medical_cards import Visit
+from application.db.fake_db import data
+from application.logic.card import is_valid_patient
+from application.logic.card import check_other_appointments
+from application.logic.card import delete_appointment
+from application.logic.card import delete_visit
+from application.models.medical_cards import MedicalCard
+from application.models.medical_cards import Appointment
+from application.models.medical_cards import Visit
 
 router = APIRouter(prefix="/Patients", tags=["Patients"])
 
