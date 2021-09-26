@@ -4,12 +4,10 @@ from fastapi import APIRouter
 from fastapi import HTTPException
 
 from application.db.fake_db import data
-from application.logic.card import is_valid_patient, add_visit_helper
 from application.logic.card import check_other_appointments
-from application.logic.card import delete_appointment
-from application.logic.card import delete_visit
-from application.models.medical_cards import MedicalCard
+from application.logic.card import is_valid_patient, add_visit_helper
 from application.models.medical_cards import Appointment
+from application.models.medical_cards import MedicalCard
 from application.models.medical_cards import Visit
 
 router = APIRouter(prefix="/Patients", tags=["Patients"])

@@ -55,7 +55,7 @@ def test_add_visit_helper():
                            DOB=date(day=14, month=7, year=1987)
                            )
     new_visit = Visit(doctor=Doctor(name='Doc1'), time=date(year=2020, month=7, day=13), hospital=Hospital(id=1),
-                   info="fjeifj")
+                      info="fjeifj")
     visit2 = Visit(doctor=Doctor(name='Doc1'), time=date(year=2020, month=7, day=13), hospital=Hospital(id=1),
                    info="")
     app1 = Appointment(doctor=Doctor(name="Doc1"), hospital=Hospital(id=1), time=date(year=2020, month=7, day=13))

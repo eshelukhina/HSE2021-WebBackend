@@ -77,4 +77,3 @@ def test_delete_visit():
     patient1.info.visit.append(visit2)
     delete_visit(visit1, 1)
     assert len(patient1.info.visit) == 1
-
