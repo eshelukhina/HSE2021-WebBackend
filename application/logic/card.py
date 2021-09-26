@@ -1,7 +1,7 @@
-from models.medical_cards import MedicalCard
+from application.models.medical_cards import MedicalCard
 from datetime import datetime, date
-from db.fake_db import data
-from models.medical_cards import Visit
+from application.db.fake_db import data
+from application.models.medical_cards import Visit
 
 
 def is_valid_name(name):
@@ -18,8 +18,8 @@ def is_valid_age(age):
     return False
 
 
-def is_valid_date(date: date):
-    return date <= date(day=1, month=1, year=2020)
+def is_valid_date(date1: date):
+    return date1 <= date(day=1, month=1, year=2020)
 
 
 def is_valid_patient(card: MedicalCard):

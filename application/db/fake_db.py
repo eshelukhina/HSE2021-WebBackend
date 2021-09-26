@@ -1,4 +1,4 @@
-from models.medical_cards import MedicalCard
+from application.models.medical_cards import MedicalCard
 from datetime import datetime, date
 
 patient1 = MedicalCard(name="Dan Reynolds",
