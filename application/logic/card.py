@@ -51,3 +51,10 @@ def delete_visit(visit: Visit, patient_id: int):
     for vis in patient.info.visit:
         if vis.time == visit.time and vis.doctor == visit.doctor and vis.hospital == visit.hospital and vis.info != visit.info:
             patient.info.visit.remove(vis)
+
+
+def add_visit_helper(patient_id: int, new_visit: Visit):
+    card = data[patient_id]
+    card.info.visit.append(new_visit)
+    delete_appointment(new_visit, patient_id)
+    delete_visit(new_visit, patient_id)

@@ -4,7 +4,7 @@ from fastapi import APIRouter
 from fastapi import HTTPException
 
 from application.db.fake_db import data
-from application.logic.card import is_valid_patient
+from application.logic.card import is_valid_patient, add_visit_helper
 from application.logic.card import check_other_appointments
 from application.logic.card import delete_appointment
 from application.logic.card import delete_visit
@@ -54,7 +54,5 @@ async def add_visit(patient_id: int, new_visit: Visit):
         if new_visit in card.info.visit:
             raise HTTPException(status_code=400, detail="Visit already exists")
         else:
-            card.info.visit.append(new_visit)
-            delete_appointment(new_visit, patient_id)
-            delete_visit(new_visit, patient_id)
+            add_visit_helper(patient_id, new_visit)
     return data[patient_id]

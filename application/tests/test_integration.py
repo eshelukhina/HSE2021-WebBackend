@@ -5,8 +5,8 @@ from random import randint
 from random import seed
 
 from application.db.fake_db import data
-from application.logic.card import is_valid_patient, check_other_appointments
-from application.models.medical_cards import MedicalCard, Appointment, Doctor, Hospital
+from application.logic.card import is_valid_patient, check_other_appointments, add_visit_helper
+from application.models.medical_cards import MedicalCard, Appointment, Doctor, Hospital, Visit
 
 
 def randomString(N):
@@ -45,3 +45,24 @@ def test_check_other_appointments():
     assert len(patient1.info.visit) == 1
 
 
+def test_add_visit_helper():
+    patient_id = 1
+    data.clear()
+    patient1 = MedicalCard(name="Dan Reynolds",
+                           age=34,
+                           gender="Male",
+                           diagnosis="Ankylosing spondylitis",
+                           DOB=date(day=14, month=7, year=1987)
+                           )
+    new_visit = Visit(doctor=Doctor(name='Doc1'), time=date(year=2020, month=7, day=13), hospital=Hospital(id=1),
+                   info="fjeifj")
+    visit2 = Visit(doctor=Doctor(name='Doc1'), time=date(year=2020, month=7, day=13), hospital=Hospital(id=1),
+                   info="")
+    app1 = Appointment(doctor=Doctor(name="Doc1"), hospital=Hospital(id=1), time=date(year=2020, month=7, day=13))
+    patient1.info.visit.append(visit2)
+    patient1.info.appointment.append(app1)
+    data[patient_id] = patient1
+    assert len(patient1.info.appointment) == 1
+    add_visit_helper(patient_id, new_visit)
+    assert len(patient1.info.visit) == 1
+    assert len(patient1.info.appointment) == 0
