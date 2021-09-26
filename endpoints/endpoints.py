@@ -6,6 +6,7 @@ from fastapi import HTTPException
 from db.fake_db import data
 from logic.card import is_valid_patient
 from models.medical_cards import MedicalCard
+from models.medical_cards import Appointment
 
 router = APIRouter(prefix="/Patients", tags=["Patients"])
 
@@ -27,3 +28,13 @@ async def add_patient(patient_id: int, card: MedicalCard):
     else:
         raise HTTPException(status_code=400, detail="Invalid patient params. Name must contains firstname and "
                                                     "lastname. Age must be >= 0")
+
+
+@router.post("/add_appointment")
+async def add_appointment(patient_id: int, new_appointment: Appointment):
+    if patient_id not in data:
+        raise HTTPException(status_code=400, detail="Id does not exist")
+    else:
+        card = data[patient_id]
+        card.info.appointment.append(new_appointment)
+    return data[patient_id]

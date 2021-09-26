@@ -1,4 +1,5 @@
 from models.medical_cards import MedicalCard
+from datetime import datetime, date
 
 
 def is_valid_name(name):
@@ -15,7 +16,14 @@ def is_valid_age(age):
     return False
 
 
+def is_valid_date(date: date):
+    return date <= date.today()
+
+
 def is_valid_patient(card: MedicalCard):
-    if is_valid_name(card.name) and is_valid_age(card.age):
+    if is_valid_name(card.name) and is_valid_age(card.age) and is_valid_date(card.DOB):
         return True
     return False
+
+
+
