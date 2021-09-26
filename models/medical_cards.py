@@ -13,7 +13,7 @@ class Hospital(BaseModel):
 
 class Visit(BaseModel):
     doctor: Doctor
-    time: date = None
+    time: date = date.today()
     hospital: Hospital
     info: str = ""
 
@@ -27,7 +27,7 @@ class Diagnosis(BaseModel):
 class Appointment(BaseModel):
     doctor: Doctor
     hospital: Hospital
-    time: date = None
+    time: date = date.today()
 
 
 class InfoData(BaseModel):
