@@ -3,7 +3,6 @@ from datetime import date
 from application.db.fake_db import data
 from application.models.medical_cards import MedicalCard
 from application.models.medical_cards import Visit
-from fastapi import HTTPException
 
 
 def is_valid_name(name):

@@ -3,11 +3,10 @@ import string
 from datetime import date
 from random import randint
 from random import seed
-from typing import List
 
 from application.db.fake_db import data
 from application.logic.card import is_valid_patient, check_other_appointments
-from application.models.medical_cards import MedicalCard, InfoData, Appointment, Doctor, Hospital
+from application.models.medical_cards import MedicalCard, Appointment, Doctor, Hospital
 
 
 def randomString(N):
@@ -43,3 +42,6 @@ def test_check_other_appointments():
     data[patient_id] = patient1
     check_other_appointments(patient_id)
     assert len(patient1.info.appointment) == 1
+    assert len(patient1.info.visit) == 1
+
+
